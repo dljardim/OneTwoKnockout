@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>$ vs. ko</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        select{
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="hero-unit">
+        <h2>Wish List</h2>
+        <ol id="wish-list">
+
+        </ol>
+
+        <input id="wish-item" place-holder="Item" />
+
+        <select id="wish-desire-level">
+            <option></option>
+
+        </select>
+        <button id="button-add" class="btn btn-primary">Add</button>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+
+    var fakeServerData = ['Really Want', 'Kinda Want'];
+    var $level = $('#wish-desire-level');
+    var $buttonAdd = $('#button-add');
+    var $list = $('#wish-list');
+    var $item = $('#wish-item');
+
+    $.each(fakeServerData, function(key,value){
+        $level.append($('<option>',{
+            text: value
+        }))
+    });
+
+    $buttonAdd.on('click', function(){
+        var itemText = $item.val() + ' ' + $level.children(':selected').text();
+
+        $list.append($('<li>',{
+            text: itemText
+        }));
+
+    });
+
+
+</script>
+</body>
+</html>
